@@ -1,0 +1,24 @@
+{
+  "name": "website",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/solid-js": "^5.1.0",
+    "@fontsource-variable/dm-sans": "^5.2.6",
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.11.0",
+    "clsx": "^2.1.1",
+    "solid-js": "^1.9.7",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}

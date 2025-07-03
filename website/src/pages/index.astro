@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import WaitlistSignupForm from "../components/WaitistSignupForm.tsx";
+import AppIcon from "../../public/app-icon.png";
+import Bg from "../../public/bg.svg";
+---
+
+<BaseLayout>
+	<main
+		class="min-h-screen flex flex-col items-center justify-center bg-center bg-cover"
+		style={`background-image: url("${Bg.src}")`}
+	>
+		<Image src={AppIcon} alt="Resolve app icon" class="w-30" />
+		<h1
+			class="text-5xl font-dm font-semibold max-w-xl text-center leading-15 mt-8 mb-24 text-white"
+		>
+			Keep your resolutions.
+		</h1>
+		<WaitlistSignupForm client:only />
+	</main>
+</BaseLayout>
