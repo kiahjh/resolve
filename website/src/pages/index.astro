@@ -7,16 +7,16 @@ import Bg from "../../public/bg.svg";
 ---
 
 <BaseLayout>
-	<main
-		class="min-h-screen flex flex-col items-center justify-center bg-center bg-cover"
-		style={`background-image: url("${Bg.src}")`}
-	>
-		<Image src={AppIcon} alt="Resolve app icon" class="w-30" />
-		<h1
-			class="text-5xl font-dm font-semibold max-w-xl text-center leading-15 mt-8 mb-24 text-white"
-		>
-			Keep your resolutions.
-		</h1>
-		<WaitlistSignupForm client:only />
-	</main>
+  <main
+    class="min-h-screen flex flex-col items-center justify-center bg-center bg-cover"
+    style={`background-image: url("${Bg.src}")`}
+  >
+    <Image src={AppIcon} alt="Resolve app icon" class="w-24 sm:w-30" />
+    <h1
+      class="text-4xl sm:text-5xl mx-8 font-dm font-semibold max-w-xl text-center leading-12 mt-8 mb-16 text-white"
+    >
+      Keep your resolutions.
+    </h1>
+    <WaitlistSignupForm client:only />
+  </main>
 </BaseLayout>

@@ -1,8 +1,10 @@
 use axum::{Extension, Json, http::StatusCode, response::IntoResponse};
+use dotenvy_macro::dotenv;
 use regex::Regex;
 use resend_rs::{Resend, types::CreateEmailBaseOptions};
 use serde::Deserialize;
 use sqlx::{Pool, Sqlite};
+use uuid::Uuid;
 
 use crate::GenericResponse;
 
@@ -45,9 +47,11 @@ pub async fn waitlist_signup(
         );
     }
 
+    let uuid = Uuid::new_v4().to_string();
     let Ok(res) = sqlx::query!(
-        "INSERT INTO waitlist (email) VALUES ($1) RETURNING id;",
-        input.email
+        "INSERT INTO waitlist (email,id) VALUES ($1,$2) RETURNING id;",
+        input.email,
+        uuid
     )
     .fetch_one(&pool)
     .await
@@ -65,7 +69,8 @@ pub async fn waitlist_signup(
     let to = [&input.email];
     let subject = "Verify your email for Resolve";
     let html = &format!(
-        r#"<h1>Hi there!</h1><p>Just one more step to join the waitlist. Click the link below:</p><a href="http://localhost:4000/verify-email?id={}">Verify your email</a>"#,
+        r#"<h1>Hi there!</h1><p>Just one more step to join the waitlist. Click the link below:</p><a href="{}/verify-email?id={}">Verify your email</a>"#,
+        dotenv!("API_ENDPOINT"),
         res.id
     );
 

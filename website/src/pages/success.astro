@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Bg from "../../public/bg.svg";
+---
+
+<BaseLayout>
+  <main
+    class="min-h-screen flex flex-col items-center justify-center bg-center bg-cover"
+    style={`background-image: url("${Bg.src}")`}
+  >
+    <div
+      class="flex items-center flex-col sm:bg-gradient-to-b from-white to-blue-200 rounded-3xl p-8 sm:p-16 gap-3"
+    >
+      <h1 class="text-3xl sm:text-4xl font-dm font-bold text-center">
+        You're on the waitlist!
+      </h1>
+      <p class="text-lg sm:text-xl font-medium text-blue-950/80 text-center">
+        We'll let you know when the app is ready to use!
+      </p>
+    </div>
+  </main>
+</BaseLayout>

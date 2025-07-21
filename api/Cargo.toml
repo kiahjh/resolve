@@ -9,9 +9,15 @@ serde = { version = "1.0.219", features = ["derive"] }
 tokio = { version = "1.46.0", features = ["full"] }
 tower = "0.5.2"
 tower-http = { version = "0.6.2", features = ["cors"] }
-sqlx = { version = "0.8", features = [ "runtime-tokio", "sqlite", "chrono" ] }
+sqlx = { version = "0.8", features = [
+    "runtime-tokio",
+    "sqlite",
+    "chrono",
+    "uuid",
+] }
 chrono = "0.4.41"
 regex = "1.11.1"
 dotenvy = "0.15.7"
 dotenvy_macro = "0.15.7"
 resend-rs = "0.15.0"
+uuid = { version = "1.17.0", features = ["v4"] }

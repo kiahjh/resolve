@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Bg from "../../public/bg.svg";
+---
+
+<BaseLayout>
+  <main
+    class="min-h-screen flex flex-col items-center justify-center bg-center bg-cover"
+    style={`background-image: url("${Bg.src}")`}
+  >
+    <div
+      class="flex items-center flex-col sm:bg-gradient-to-b from-white to-blue-200 rounded-3xl p-8 sm:p-12 gap-8"
+    >
+      <h1 class="text-3xl sm:text-4xl font-dm font-bold text-center">
+        Hmm, something went wrong...
+      </h1>
+      <a
+        href="/"
+        class="bg-blue-400 text-white font-medium text-lg px-6 py-2 rounded-full hover:bg-blue-500"
+        >Try again</a
+      >
+    </div>
+  </main>
+</BaseLayout>

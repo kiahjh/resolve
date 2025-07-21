@@ -1,5 +1,8 @@
-use axum::{Extension, Router, routing::post};
-use handlers::waitlist_signup::waitlist_signup;
+use axum::{
+    Extension, Router,
+    routing::{get, post},
+};
+use handlers::{verify_email::verify_email, waitlist_signup::waitlist_signup};
 use serde::Serialize;
 use sqlx::sqlite::SqlitePoolOptions;
 use std::error::Error;
@@ -19,6 +22,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let app = Router::new()
         .route("/waitlist-signup", post(waitlist_signup))
+        .route("/verify-email", get(verify_email))
         .layer(
             ServiceBuilder::new().layer(Extension(pool)).layer(
                 CorsLayer::new()
