@@ -1,0 +1,18 @@
+let resolutions = [
+  Resolution(id: "1", name: "Morning gym", streakCount: 9),
+  Resolution(id: "2", name: "Drink water", streakCount: 15),
+  Resolution(id: "3", name: "Read a book", streakCount: 4),
+  Resolution(id: "4", name: "Don't smoke", streakCount: 20),
+  Resolution(id: "5", name: "Meditate", streakCount: 12),
+  Resolution(id: "6", name: "Learn SwiftUI", streakCount: 30),
+  Resolution(id: "7", name: "Cook healthy meals", streakCount: 8),
+  Resolution(id: "8", name: "Practice guitar", streakCount: 25),
+  Resolution(id: "9", name: "Sleep early", streakCount: 10),
+  Resolution(id: "10", name: "Reduce screen time", streakCount: 18),
+  Resolution(id: "11", name: "Volunteer weekly", streakCount: 5),
+  Resolution(id: "12", name: "Write in journal", streakCount: 7),
+  Resolution(id: "13", name: "Learn a new language", streakCount: 14),
+  Resolution(id: "14", name: "Run a marathon", streakCount: 3),
+  Resolution(id: "15", name: "Save money", streakCount: 22),
+  Resolution(id: "16", name: "Practice mindfulness", streakCount: 11),
+]
