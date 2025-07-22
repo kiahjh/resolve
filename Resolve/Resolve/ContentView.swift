@@ -9,6 +9,9 @@ struct ContentView: View {
       Tab("Friends", systemImage: "person.2") {
         Text("friends")
       }
+      Tab("Settings", systemImage: "gearshape") {
+        Text("settings")
+      }
     }
   }
 }

@@ -1,35 +1,129 @@
 import SwiftUI
 
+// resolution cards have:
+// - name ALL ✅
+// - current streak ALL ✅
+// - penalty
+// - ppl it’s shared with ✅
+// - duration
+// - next check-in ALL
+
 struct ResolutionCard: View {
-  let name: String
-  let streakCount: Int
+  let resolution: Resolution
+  
   
   var body: some View {
-    HStack {
-      Text(self.name)
-        .font(.system(size: 16, weight: .medium))
-        .foregroundStyle(.black)
+    let flame = streakToFlame(self.resolution.currentStreak)
+    VStack {
+      HStack {
+        Text(self.resolution.name)
+          .font(.system(size: 16, weight: .semibold))
+          .foregroundStyle(.black)
+          .multilineTextAlignment(.leading)
+          .shadow(color: .white, radius: 20, x: 0, y: 0)
+          .shadow(color: .white, radius: 10, x: 0, y: 0)
+          .shadow(color: .white, radius: 5, x: 0, y: 0)
+          .shadow(color: .white, radius: 5, x: 0, y: 0)
+          .shadow(color: .white, radius: 5, x: 0, y: 0)
+        Spacer()
+      }
+      .padding(6)
+      .zIndex(1)
+      Spacer()
+      ZStack {
+        Image(flame.img)
+          .resizable()
+          .frame(width: CGFloat(flame.width), height: CGFloat(flame.height))
+        Text("\(self.resolution.currentStreak)")
+          .font(.system(size: 24, weight: .black))
+          .shadow(color: Color(hex: flame.shadowColor)!, radius: 5, x: 0, y: 0)
+          .shadow(color: Color(hex: flame.shadowColor)!, radius: 20, x: 0, y: 0)
+          .foregroundStyle(.white)
+          .offset(y: CGFloat(flame.yOffset))
+      }
+      .offset(y: -8)
       Spacer()
       HStack {
-        Text("\(self.streakCount)")
-          .font(.system(size: 14, weight: .bold))
-          .foregroundStyle(Color(red: 0.98, green: 0.30, blue: 0.20))
-        Image("Flame")
-          .resizable()
-          .frame(width: 16, height: 24)
+        HStack(spacing: -12) {
+          ForEach(self.resolution.sharedWith) { user in
+            AsyncImage(url: URL(string: user.imgUrl))
+              .frame(width: 24, height: 24)
+              .clipShape(Circle())
+              .overlay {
+                Circle()
+                  .stroke(.white, lineWidth: 2)
+              }
+          }
+        }
+        Spacer()
+        HStack(spacing: 4) {
+          if self.resolution.penalty > 0 {
+            VStack(alignment: .trailing) {
+              Text("Penalty")
+                .font(.system(size: 8, weight: .medium))
+              Text("$\(self.resolution.penalty)")
+                .font(.system(size: 10, weight: .bold))
+            }
+            .padding(.horizontal, 6)
+            .padding(.vertical, 4)
+            .background(.gray.opacity(0.1))
+            .cornerRadius(8)
+          } else {
+            VStack(alignment: .center) {
+              Text("No")
+                .font(.system(size: 8, weight: .medium))
+              Text("penalty")
+                .font(.system(size: 8, weight: .medium))
+            }
+            .padding(.horizontal, 6)
+            .padding(.vertical, 4)
+            .background(.gray.opacity(0.1))
+            .cornerRadius(8)
+          }
+          if self.resolution.until != nil {
+            VStack(alignment: .trailing) {
+              Text("Ends")
+                .font(.system(size: 8, weight: .medium))
+              Text(self.resolution.until ?? "")
+                .font(.system(size: 10, weight: .bold))
+            }
+            .padding(.horizontal, 6)
+            .padding(.vertical, 4)
+            .background(.gray.opacity(0.1))
+            .cornerRadius(8)
+          } else {
+            VStack(alignment: .center) {
+              Text("Life-long")
+                .font(.system(size: 8, weight: .medium))
+              Text("goal")
+                .font(.system(size: 8, weight: .medium))
+            }
+            .padding(.horizontal, 6)
+            .padding(.vertical, 4)
+            .background(.gray.opacity(0.1))
+            .cornerRadius(8)
+          }
+        }
       }
+      .frame(height: 28)
     }
-    .padding(20)
+    .padding(8)
+    .frame(height: 200)
     .background(.white)
     .cornerRadius(16)
+    .foregroundStyle(.black)
   }
 }
 
 #Preview {
-  VStack {
-    ResolutionCard(name: "Example resolution", streakCount: 12)
-    ResolutionCard(name: "Another resolution", streakCount: 200)
-    ResolutionCard(name: "Another resolution", streakCount: 3202)
-    ResolutionCard(name: "Yet another resolution", streakCount: 7)
+  ScrollView {
+    LazyVGrid(columns: [GridItem(.flexible(minimum: 150, maximum: 400)), GridItem(.flexible(minimum: 150, maximum: 400))], spacing: 10) {
+      ForEach(resolutions) { resolution in
+        ResolutionCard(resolution: resolution)
+          .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 4)
+      }
+    }
+    .padding()
   }
+  .background(Gradient(colors: [.white, .gray.opacity(0.1)]))
 }

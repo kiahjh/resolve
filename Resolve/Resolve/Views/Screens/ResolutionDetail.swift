@@ -9,5 +9,5 @@ struct ResolutionDetail: View {
 }
 
 #Preview {
-  ResolutionDetail(resolution: Resolution(id: "1", name: "Example Resolution", streakCount: 5))
+  ResolutionDetail(resolution: resolutions[0])
 }
