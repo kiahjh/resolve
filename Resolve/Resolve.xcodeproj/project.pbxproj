@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0FB315FE2E3119EE00B9246E /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB315FD2E3119EE00B9246E /* RiveRuntime */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0F3B1FF12E2FB09C00489C9D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FB315FE2E3119EE00B9246E /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = Resolve;
 			packageProductDependencies = (
+				0FB315FD2E3119EE00B9246E /* RiveRuntime */,
 			);
 			productName = Resolve;
 			productReference = 0F3B1FE32E2FB09A00489C9D /* Resolve.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 0F3B1FDA2E2FB09A00489C9D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0FB315FC2E3119EE00B9246E /* XCRemoteSwiftPackageReference "rive-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0F3B1FE42E2FB09A00489C9D /* Products */;
 			projectDirPath = "";
@@ -564,6 +573,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0FB315FC2E3119EE00B9246E /* XCRemoteSwiftPackageReference "rive-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rive-app/rive-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0FB315FD2E3119EE00B9246E /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FB315FC2E3119EE00B9246E /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0F3B1FDB2E2FB09A00489C9D /* Project object */;
 }

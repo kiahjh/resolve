@@ -1,4 +1,5 @@
 import SwiftUI
+import RiveRuntime
 
 // resolution cards have:
 // - name ALL ✅
@@ -30,18 +31,8 @@ struct ResolutionCard: View {
       .padding(6)
       .zIndex(1)
       Spacer()
-      ZStack {
-        Image(flame.img)
-          .resizable()
-          .frame(width: CGFloat(flame.width), height: CGFloat(flame.height))
-        Text("\(self.resolution.currentStreak)")
-          .font(.system(size: 24, weight: .black))
-          .shadow(color: Color(hex: flame.shadowColor)!, radius: 5, x: 0, y: 0)
-          .shadow(color: Color(hex: flame.shadowColor)!, radius: 20, x: 0, y: 0)
-          .foregroundStyle(.white)
-          .offset(y: CGFloat(flame.yOffset))
-      }
-      .offset(y: -8)
+      RiveViewModel(fileName: "lobster-2").view()
+        .frame(height: 105)
       Spacer()
       HStack {
         HStack(spacing: -12) {
